@@ -8,9 +8,12 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup()
         local lspconfig = require('lspconfig')
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         for _, server in ipairs(servers) do
             if (server == "lua_ls") then
-                lspconfig[server].setup {}
+                lspconfig[server].setup {
+                    capabilities = capabilities
+                }
             end
         end
         vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
