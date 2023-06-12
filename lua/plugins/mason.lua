@@ -1,4 +1,5 @@
 return {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate"
+    build = ":MasonUpdate",
+    lazy=true
 }

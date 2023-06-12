@@ -6,7 +6,9 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
         require("mason").setup()
-        require("mason-lspconfig").setup()
+        require("mason-lspconfig").setup {
+            automatic_installation = true,
+        }
         local lspconfig = require('lspconfig')
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         for _, server in ipairs(servers) do
