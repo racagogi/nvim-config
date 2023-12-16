@@ -11,16 +11,14 @@ return {
         vim.cmd("highlight IndentBlanklineSpaceChar          guifg=#076678 gui=nocombine")
         vim.cmd("highlight IndentBlanklineChar               guifg=#076678 gui=nocombine")
         vim.cmd("highlight IndentBlanklineContextChar        guifg=#427b58 gui=nocombine")
-        require "indent_blankline".setup({
-            char_highlight_list = {
+        require "ibl".setup({
+            indent = { highlight = {
                 "IndentBlanklineIndent1",
                 "IndentBlanklineIndent2",
                 "IndentBlanklineIndent3",
                 "IndentBlanklineIndent4",
                 "IndentBlanklineIndent5",
-                "IndentBlanklineIndent6" },
-            show_current_context = true,
-            show_current_context_start = true
+                "IndentBlanklineIndent6" }},
         })
     end
 }

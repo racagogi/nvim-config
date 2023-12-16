@@ -1,4 +1,4 @@
 return {
     "williamboman/mason-lspconfig.nvim",
-    lazy=true
+    lazy = true
 }

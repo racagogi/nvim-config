@@ -10,19 +10,12 @@ return {
         "tamago324/cmp-zsh",
         "ray-x/cmp-treesitter",
         "kdheepak/cmp-latex-symbols",
-        "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-cmdline"
     },
     event = "InsertEnter",
     config = function()
         local cmp = require 'cmp'
-        local luasnip = require 'luasnip'
         cmp.setup {
-            snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end
-            },
             formatting = {
                 format = require 'lspkind'.cmp_format {
                     mode = "symbol_text",

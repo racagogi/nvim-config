@@ -40,14 +40,14 @@ return {
                     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
                     local clients = vim.lsp.get_active_clients()
                     if (next(clients) == nil) then
-                        local lsp_status = ("\239\174\164 " .. msg)
+                        local lsp_status = ("󱐥 " .. msg)
                         return lsp_status
                     else
                     end
                     for _, client in ipairs(clients) do
                         local filetypes = client.config.filetypes
                         if (filetypes and (vim.fn.index(filetypes, buf_ft) ~= (-1))) then
-                            local lsp_status = ("\239\174\163 " .. client.name)
+                            local lsp_status = ("󰚥 " .. client.name)
                             return lsp_status
                         else
                         end

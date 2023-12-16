@@ -1,5 +1,8 @@
 local servers = {
-    "lua_ls"
+    "lua_ls",
+    "rust_analyzer",
+    "hls",
+    "nil_ls"
 }
 
 return {
@@ -7,7 +10,9 @@ return {
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup {
-            automatic_installation = true,
+            automatic_installation = {
+                exclude = {"hls"}
+            }
         }
         local lspconfig = require('lspconfig')
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -28,6 +33,10 @@ return {
                             },
                         }
                     }
+                }
+            else
+                lspconfig[server].setup {
+                    capabilities = capabilities,
                 }
             end
         end
