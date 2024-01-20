@@ -2,7 +2,6 @@ local servers = {
     "lua_ls",
     "rust_analyzer",
     "hls",
-    "nil_ls"
 }
 
 return {

@@ -19,6 +19,13 @@ return {
                 "IndentBlanklineIndent4",
                 "IndentBlanklineIndent5",
                 "IndentBlanklineIndent6" }},
+            scope = { highlight = {
+                "IndentBlanklineIndent1",
+                "IndentBlanklineIndent2",
+                "IndentBlanklineIndent3",
+                "IndentBlanklineIndent4",
+                "IndentBlanklineIndent5",
+                "IndentBlanklineIndent6" }}
         })
     end
 }

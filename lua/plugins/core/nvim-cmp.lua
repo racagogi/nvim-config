@@ -4,18 +4,23 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "onsails/lspkind.nvim",
         "hrsh7th/cmp-buffer",
+        "L3MON4D3/LuaSnip",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-calc",
-        "petertriho/cmp-git",
         "tamago324/cmp-zsh",
         "ray-x/cmp-treesitter",
         "kdheepak/cmp-latex-symbols",
-        "hrsh7th/cmp-cmdline"
     },
     event = "InsertEnter",
     config = function()
         local cmp = require 'cmp'
+        local luasnip = require 'luasnip'
         cmp.setup {
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
             formatting = {
                 format = require 'lspkind'.cmp_format {
                     mode = "symbol_text",
@@ -24,7 +29,6 @@ return {
                         buffer = "[Buffer]",
                         latex_symbols = "[Latex]",
                         luasnip = "[LuaSnip]",
-                        neorg = "[neorg]"
                     }
                 }
             },
@@ -71,9 +75,7 @@ return {
                 { name = 'buffer' },
                 { name = 'calc' },
                 { name = 'path' },
-                { name = 'luasnip_choice' },
                 { name = 'latex_symbols' },
-                { name = 'git' },
                 { name = 'treesitter' },
             })
         }

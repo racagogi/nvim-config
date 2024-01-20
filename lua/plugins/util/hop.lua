@@ -17,8 +17,8 @@ return {
         vim.keymap.set({ 'o', 'n', 'v' }, 'T', function()
             hop.hint_char1({ direction = directions.BEFORE_CURSOR, hint_offset = 1 })
         end, opts)
-        vim.keymap.set({ 'o', 'n', 'v' }, '<M-v>', "<cmd>HopVertical<cr>", opts)
-        vim.keymap.set({ 'o', 'n', 'v' }, '<M-p>', "<cmd>HopPattern<cr>", opts)
-        vim.keymap.set({ 'o', 'n', 'v' }, '<M-w>', "<cmd>HopWord<cr>", opts)
+        vim.keymap.set({ 'o', 'n', 'v' }, 'gv', "<cmd>HopVertical<cr>", opts)
+        vim.keymap.set({ 'o', 'n', 'v' }, 'gp', "<cmd>HopPattern<cr>", opts)
+        vim.keymap.set({ 'o', 'n', 'v' }, 'gw', "<cmd>HopWord<cr>", opts)
     end
 }
