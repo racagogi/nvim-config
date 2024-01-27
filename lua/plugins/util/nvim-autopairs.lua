@@ -15,7 +15,7 @@ return {
                 highlight_grey = 'Comment'
             },
         }
-        require("nvim-autopairs").get_rules("'")[1].not_filetypes = { "scheme", "lisp" }
-        require("nvim-autopairs").get_rules("`")[1].not_filetypes = { "scheme", "lisp" }
+        require("nvim-autopairs").get_rules("'")[1].not_filetypes = { "scheme", "lisp", "racket" }
+        require("nvim-autopairs").get_rules("`")[1].not_filetypes = { "scheme", "lisp", "racket" }
     end
 }

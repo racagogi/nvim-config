@@ -1,10 +1,21 @@
 local servers = {
     "ast_grep",
+    "autotools_ls",
+    "dockerls",
+    "eslint",
+    "kotlin_language_server",
+    "ltex",
+    "purescriptls",
+    "pylsp",
+    "sorbet",
+    "svelte",
+    "marksman",
     "bashls",
     "clangd",
     "clojure_lsp",
     "cmake",
     "csharp_ls",
+    "cssls",
     "elixirls",
     "elmls",
     "erlangls",
@@ -14,22 +25,21 @@ local servers = {
     "guile_ls",
     "hls",
     "html",
+    "java_language_server",
+    "jsonls",
     "julials",
     "lua_ls",
     "nushell",
+    "ocamllsp",
+    "racket_langserver",
     "rust_analyzer",
+    "tailwindcss",
+    "taplo",
+    "texlab",
+    "tsserver",
     "vimls",
     "vuels",
     "yamlls",
-    "taplo",
-    "texlab",
-    "ocamllsp",
-    "racket_langserver",
-    "java_language_server",
-    "jsonls",
-    "cssls",
-    "tsserver",
-    "tailwindcss",
     "zls",
 }
 
@@ -39,7 +49,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup {
             automatic_installation = {
-                exclude = {"hls"}
+                exclude = { "hls" }
             }
         }
         local lspconfig = require('lspconfig')
@@ -62,6 +72,11 @@ return {
                         }
                     }
                 }
+            elseif (server == "racket_langserver") then
+                lspconfig[server].setup {
+                    capabilities = capabilities,
+                    filetypes = { 'racket' },
+                }
             else
                 lspconfig[server].setup {
                     capabilities = capabilities,
@@ -71,16 +86,11 @@ return {
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
-        -- Use LspAttach autocommand to only map the following keys
-        -- after the language server attaches to the current buffer
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
             callback = function(ev)
-                -- Enable completion triggered by <c-x><c-o>
                 vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-                -- Buffer local mappings.
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
                 local opts = { buffer = ev.buf }
                 vim.keymap.set('n', '<space>D', vim.lsp.buf.declaration, opts)
                 vim.keymap.set('n', '<space>d', vim.lsp.buf.definition, opts)
