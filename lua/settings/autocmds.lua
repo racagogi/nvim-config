@@ -38,9 +38,10 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEn
     end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+vim.api.nvim_create_autocmd({ "CursorMoved", "InsertLeave" }, {
     pattern = "*",
     callback = function()
-        vim.cmd [[exec "normal zz"]]
+        vim.cmd [[exec "normal zz" ]]
+        vim.cmd [[redraw]]
     end,
 })
